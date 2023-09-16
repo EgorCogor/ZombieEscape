@@ -11,11 +11,12 @@ public class GameManager : MonoBehavior
 
   void Start() 
   {
-    Instantiate(locations[0], transform.forward, transform.rotation)
+    Instantiate(locations[0], transform.forward, transform.rotation);
     
   }
   void CreateLocation()
   {
-    Instantiate(locations[Ramdom.Range(0, locations.Count)], transform.forward, transform.rotation) 
+    Instantiate(locations[Ramdom.Range(0, locations.Count)], transform.forward * levelLength, transform.rotation);
+    levelLength += levelLength
   }
 }
