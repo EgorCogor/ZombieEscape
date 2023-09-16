@@ -9,4 +9,8 @@ public class GameManager : MonoBehavior
   [SerializeField] levelLength;
   int count = 5;
 
+  void Start() 
+  {
+    Instantiate       
+  }
 }
