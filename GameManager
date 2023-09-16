@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehavior
 {
-  [SerializeField] List<GameObject> location = new List<GameObject>();
+  [SerializeField] List<GameObject> locations = new List<GameObject>();
   [SerializeField] Transform player;
   [SerializeField] levelLength;
   int count = 5;
 
   void Start() 
   {
-    Instantiate       
+    Instantiate(locations[0], transform.forward, transform.rotation)
+    
   }
 }
