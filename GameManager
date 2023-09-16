@@ -17,6 +17,6 @@ public class GameManager : MonoBehavior
   void CreateLocation()
   {
     Instantiate(locations[Ramdom.Range(0, locations.Count)], transform.forward * levelLength, transform.rotation);
-    levelLength += levelLength
+    levelLength +=
   }
 }
