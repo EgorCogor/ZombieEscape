@@ -3,3 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehavior
+{
+  [SerializeField] List<GameObject> location = new List<GameObject>();
+  [SerializeField] Transform player;
+  [SerializeField] levelLength;
+  int count = 5;
+
+}
