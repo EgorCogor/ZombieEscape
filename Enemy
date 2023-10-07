@@ -1,0 +1,46 @@
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    int damage; //урон который враг наносит
+    int health; //здоровье врага
+    GameObject player; //Информация о игроке
+    bool dead = false; //Мертвый ли враг
+
+    public virtual void Move() //Враг может как-то двигаться
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) < 100) //100 - радиус обнаружения
+        {
+            transform.LookAt(player.transform);
+            GetComponent<CharacterController>().Move(transform.forward * Time.deltaTime * 2);
+        }
+    }
+    public virtual void Attack() //Враг может как-то атаковать
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) < 3) //3 - радиус атаки
+        {
+            player.GetComponent<PlayerController>().ChangeHealth(-100);
+        }
+
+    }
+    public void OnDeath() //Умирают враги одинаково
+    {
+        dead = true;
+        GetComponent<Animator>().SetBool("death", true); //изменили параметр анимации
+        GetComponent<CharacterController>().enabled = false; //отключили коллайдер
+    }
+    
+    void Start()
+    {
+        player = FindObjectOfType<PlayerController>().gameObject; //Находим игрока
+    }
+    
+    private void Update() //Если враг не мертв, он двигается и атакует
+    {
+        if (!dead)
+        {
+            Move();
+            Attack();
+        }
+    }
+}
